@@ -44,3 +44,12 @@ class DarkRoast extends Coffee{
 	}
   }
  
+ 
+ /* Sample O/P */
+ ---------------------------------------------------------
+Condiment Whip added, hence cost increased by Rs 10/- 
+Condiment Mocha added , hence cost increased by Rs 20/- 
+Plain DarkRoast Coffee Cost Rs 100/- 
+Your Coffee cost is 130.0
+----------------------------------------------------------
+
