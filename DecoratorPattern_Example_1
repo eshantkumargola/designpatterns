@@ -1,3 +1,5 @@
+package com.expertorion.spring.basics.springin5steps;
+
 public abstract class Coffee {
 	public abstract double cost();	
 }
@@ -10,10 +12,10 @@ class DarkRoast extends Coffee{
 	}
 }
 
- class Mocha extends Coffee{
-	 DarkRoast darkRoast; 
+ class MochaDecorator extends Coffee{
+	 DarkRoast darkRoast;  // MochaDecorator wraps the DarkRoast Coffee 
 	
-	public Mocha(DarkRoast darkRoast) {
+	public MochaDecorator(DarkRoast darkRoast) {
 		this.darkRoast = darkRoast;
 	}
 	
@@ -23,21 +25,21 @@ class DarkRoast extends Coffee{
 	}
 }
  
- class Whip extends Coffee{
-	 Mocha mocha ;
-	 public Whip(Mocha mocha) {
-		 this.mocha = mocha;
+ class WhipDecorator extends Coffee{
+	 MochaDecorator mochaDecorator ;  // WhipDecorator wraps the MochaDecorator Object  
+	 public WhipDecorator(MochaDecorator mochaDecorator) {
+		 this.mochaDecorator = mochaDecorator;
 	 }
 	 
 	 public double cost(){
 			System.out.println("Condiment Whip added, hence cost increased by Rs 10/- ");
-			return (mocha.cost()+10);
+			return (mochaDecorator.cost()+10);
 		}
 }
  
   class customer {
 	  public static void main(String[] str) {
-		  Coffee coffee=new Whip(new Mocha(new DarkRoast()));
+		  Coffee coffee=new WhipDecorator(new MochaDecorator(new DarkRoast()));
 		  System.out.println("Your Coffee cost is "+coffee.cost());
 	}
   }
