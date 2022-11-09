@@ -1,0 +1,44 @@
+public abstract class Coffee {
+	public abstract double cost();	
+}
+
+class DarkRoast extends Coffee{
+	
+	public double cost(){
+		System.out.println("Plain DarkRoast Coffee Cost Rs 100/- ");
+		return 100;
+	}
+}
+
+ class Mocha extends Coffee{
+	 DarkRoast darkRoast; 
+	
+	public Mocha(DarkRoast darkRoast) {
+		this.darkRoast = darkRoast;
+	}
+	
+	public double cost(){
+		System.out.println("Condiment Mocha added , hence cost increased by Rs 20/- ");
+		return (darkRoast.cost()+20);
+	}
+}
+ 
+ class Whip extends Coffee{
+	 Mocha mocha ;
+	 public Whip(Mocha mocha) {
+		 this.mocha = mocha;
+	 }
+	 
+	 public double cost(){
+			System.out.println("Condiment Whip added, hence cost increased by Rs 10/- ");
+			return (mocha.cost()+10);
+		}
+}
+ 
+  class customer {
+	  public static void main(String[] str) {
+		  Coffee coffee=new Whip(new Mocha(new DarkRoast()));
+		  System.out.println("Your Coffee cost is "+coffee.cost());
+	}
+  }
+ 
